@@ -93,6 +93,7 @@ function isLeapYear(year){
 }
 
 function chronos(year, month, day){
+  
   const daysInMonth = 30;
   let daysInYear = daysInMonth * 12;
   const daysOfWeek = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
@@ -102,24 +103,19 @@ function chronos(year, month, day){
   // считаем кол дней в полных годах
   for (let i = 1; i < year; i+=1) {
     daysDate += daysInYear;
-    if (isLeapYear(i)) {
-      daysDate += 1;
-     }
-    }
+    if (isLeapYear(i))  daysDate += 1;
+   }
     
   // кол дней прошедших в текущем году 
     daysDate += (month - 1) * daysInMonth + day;    
-    if (isLeapYear(year) && month>2) {
-      daysDate += 1;
-    }
+    if (isLeapYear(year) && month>2)  daysDate += 1;
+    
   
- // daysDate -> кол. дней в полной дате
+  // daysDate -> кол. дней в полной дате
     let dayOfWeek = (daysDate % 7) + corectionShift;
     
-    if (dayOfWeek <= 0) {
-    dayOfWeek = dayOfWeek + 7;
-    }
-    
+    if (dayOfWeek <= 0) dayOfWeek = dayOfWeek + 7;
+        
   
   return daysOfWeek[dayOfWeek-1];
 }
